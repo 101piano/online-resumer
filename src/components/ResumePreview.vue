@@ -11,7 +11,9 @@
 </script>
  
 <style>
-  #resumePreview{
-    color: blue;
+  #resumePreview {
+    flex-grow: 1;
+    margin-left: 16px;
+    background: #fff;
   }
 </style>
