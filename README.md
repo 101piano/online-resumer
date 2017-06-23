@@ -37,8 +37,21 @@
 ```
 ## 开始</br>
 ### 遇到小问题</br>
-当ESLint插件认为代码不符合规范时</br>
+##### 1、当ESLint插件认为代码不符合规范时</br>
 1.按照要求来</br>
 2.禁用ESLint</br>
 在build/webpack.base.conf.js里，rules里注释关于eslint-loader的代码</br>
+##### 2、上传到github时</br>
+首先，将config/index.js中的build的assetsPulicPath改为'/online-resumer/dist'</br>
+其次，运行
+```
+npm run build //生成dist文件，需要将dist文件上传到igthub，不然依旧无法预览
+```
+最后，预览链接： https://101piano.github.io/online-resumer/dist/index.html </br>
+或者https://101piano.github.io/online-resumer/dist/ </br>
+ 
+
+
+
+
 
