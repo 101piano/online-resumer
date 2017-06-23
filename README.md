@@ -10,18 +10,7 @@
 ```
 
 全局安装vue-cli,并初始化一个vue项目</br>
-<<<<<<< HEAD
 
-
-
-
-## 开始
-###遇到小问题
-当ESLint插件认为代码不符合规范时</br>
-1.按照要求来
-2.禁用ESLint
-在build/webpack.base.conf.js里，rules里注释关于eslint-loader的代码
-=======
 ```
 > npm install -g vue-cli
 > npm init webpack .
@@ -46,4 +35,10 @@
  > npm i 
  > npm run dev  //浏览器自动弹出
 ```
->>>>>>> 09e10bd635458ce5913646a9053c45f67eb8a85e
+## 开始
+### 遇到小问题
+当ESLint插件认为代码不符合规范时</br>
+1.按照要求来</br>
+2.禁用ESLint</br>
+在build/webpack.base.conf.js里，rules里注释关于eslint-loader的代码</br>
+=======
