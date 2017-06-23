@@ -35,10 +35,10 @@
  > npm i 
  > npm run dev  //浏览器自动弹出
 ```
-## 开始
-### 遇到小问题
+## 开始</br>
+### 遇到小问题</br>
 当ESLint插件认为代码不符合规范时</br>
 1.按照要求来</br>
 2.禁用ESLint</br>
 在build/webpack.base.conf.js里，rules里注释关于eslint-loader的代码</br>
-=======
+
