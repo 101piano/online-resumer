@@ -30,20 +30,20 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .page {
     height: 100vh;
     display: flex;
     flex-direction: column;
     background: #eaebec;
-  }
-  .page>main {
-    min-width: 1024px;
-    max-width: 1440px;
-    flex-grow: 1;/*让main有高度*/
-    margin: 16px 20px;
-    display: flex;
-    justify-content: space-between;
+    >main {
+      min-width: 1024px;
+      max-width: 1440px;
+      flex-grow: 1;/*让main有高度*/
+      margin: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
 </style>
