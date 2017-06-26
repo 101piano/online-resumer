@@ -29,7 +29,7 @@
     },
     components: {Topbar,ResumeEditor,ResumePreview},
     created(){
-      codument.body.insertAdjacentHTML('afterbegin',icons)
+      document.body.insertAdjacentHTML('afterbegin',icons)
     }
   }
 </script>
@@ -48,6 +48,13 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+  svg.icon {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      vertical-align: -0.1em;
+      font-size: 16px;
   }
 
 </style>
