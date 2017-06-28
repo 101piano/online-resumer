@@ -60,6 +60,8 @@ npm install --save  sass-loader node-sass
 ```
 <style lang="scss"></style>
 ```
+### 使用svg</br>
+
 ### 使用vuex</br>
 
 
