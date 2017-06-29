@@ -16,15 +16,16 @@
         <div v-if="resume[item.field] instanceof Array">
           <div class="subitem" v-for="subitem in resume[item.field]">
             <div class="resumeField" v-for="(value,key) in subitem">
-              <label> {{key}}</label>
+              <label>{{key}}</label>
               <input type="text" :value="value">
             </div>
             <hr>
           </div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
-          <label> {{key}}</label>
-          <input type="text" v-model="resume[item.field][key]">
+          <label>{{key}}</label>
+          <input type="text" :value="value"
+            @input="changeResumeField(item.field,key,$event.target.value)">
         </div>
       </li>
     </ol>
@@ -40,7 +41,7 @@
           return this.$store.state.selected
         },
         set(value) {
-          return this.$store.commit('switchTab',value)
+          return this.$store.commit('switchTab',value)//????????
         }
       },
       resume(){
@@ -48,8 +49,12 @@
       }
     },
     methods: {
-      add(){
-        this.$store.commit('increment')
+      changeResumeField(field,subfield,value){
+        this.$store.commit('updateResume',{
+          field,
+          subfield,
+          value
+        })
       }
     }
   }

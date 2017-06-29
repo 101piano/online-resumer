@@ -26,9 +26,12 @@
     store,
     components: {Topbar,ResumeEditor,ResumePreview},
     created(){
-      document.body.insertAdjacentHTML('afterbegin',icons)
+      document.body.insertAdjacentHTML('afterbegin',icons)//将svg插入到页面中
     }
   }
+  /*insertAdjacentHTML将指定的文本解析为html或xml，
+   *并将结果节点插入到DOM树中指定的位置。
+   *afterbegin：插入元素内部的第一个子节点之前*/
 </script>
 
 <style lang="scss">
