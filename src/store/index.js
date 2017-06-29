@@ -7,6 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     selected: 'profile',
+    user: {
+      id: '',
+      username: ''
+    },
     resume: {
       config: [
         { field: 'profile',icon: 'id' },
@@ -56,6 +60,10 @@ export default new Vuex.Store({
       //state.resume[field][subfield] = xxx
       objectPath.set(state.resume,path,xxx)
       localStorage.setItem('state',JSON.stringify(state))
+    },
+    setUser(state,payload){
+      Object.assign(state.user,payload)
+      console.log(state.user)
     }
   }
 })
