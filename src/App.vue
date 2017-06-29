@@ -1,13 +1,16 @@
 <template>
-  <div class="page">
-    <header>
-      <Topbar />
-    </header>
-    <main>
-      <ResumeEditor />
-      <ResumePreview />
-    </main>    
+  <div>
+    <div class="page">
+      <header>
+        <Topbar />
+      </header>
+      <main>
+        <ResumeEditor />
+        <ResumePreview />
+      </main>    
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -27,6 +30,11 @@
     components: {Topbar,ResumeEditor,ResumePreview},
     created(){
       document.body.insertAdjacentHTML('afterbegin',icons)//将svg插入到页面中
+      let state = localStorage.getItem('state')
+      if(state) {
+        state = JSON.parse(state)
+      }
+      this.$store.commit('initState',state)
     }
   }
   /*insertAdjacentHTML将指定的文本解析为html或xml，
