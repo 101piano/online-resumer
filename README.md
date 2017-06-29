@@ -49,7 +49,19 @@ npm run build //生成dist文件，需要将dist文件上传到github，不然�
 ```
 最后，预览链接： https://101piano.github.io/online-resumer/dist/index.html </br>
 或者https://101piano.github.io/online-resumer/dist/ </br>
- 
+
+### 使用sass</br> 
+命令行：</br>
+```
+export SASS_BINARY_SITE="https://npm.taobao.org/mirrors/node-sass"
+npm install --save  sass-loader node-sass
+```
+使用：</br>
+```
+<style lang="scss"></style>
+```
+### 使用svg</br>
+
 ### 使用vuex</br>
 
 
