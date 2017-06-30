@@ -14,39 +14,19 @@ export default new Vuex.Store({
     },
     resume: {
       config: [
-        { field: 'profile',icon: 'id' },
-        { field: 'workHistory',icon: 'work' },
-        { field: 'education',icon: 'book' },
-        { field: 'projects',icon: 'heart' },
-        { field: 'awards',icon: 'cup' },
-        { field: 'contacts',icon: 'phone'}
+        { field: 'profile', icon: 'id', keys: ['姓名','城市','应聘岗位','生日']},
+        { field: 'workHistory', icon: 'work', type: 'array', keys:['公司','描述'] },
+        { field: 'education', icon: 'book', type: 'array', keys: ['学校','描述'] },
+        { field: 'projects', icon: 'heart', type: 'array', keys: ['项目名称','描述'] },
+        { field: 'awards', icon: 'cup', type: 'array', keys: ['奖项','描述'] },
+        { field: 'contacts', icon: 'phone', type: 'array', keys: ['联系方式', 'content']}
       ],
-      profile: {
-        name: '成慧',
-        city: '武汉',
-        title: '前端工程师',
-        birthday: ''
-      },
-      'workHistory': [
-        { company: 'AL',content: '我的第二份工作是' },
-        { company: 'TX',content: '我的第一份工作是' }
-      ],
-      education: [
-        { school: 'AL',content: '文字' },
-        { school: 'TX',content: '文字' }
-      ],
-      projects: [
-        { name: 'project A',content: '文字' },
-        { name: 'project B',content: '文字' }
-      ],
-      awards: [
-        { name: 'awards A',content: '文字' },
-        { name: 'awards B',content: '文字' }
-      ],
-      contacts: [
-        { contact: 'phone',content: '文字' },
-        { contact: 'qq',content: '文字' }
-      ]
+      profile: {},
+      'workHistory': [],
+      education: [],
+      projects: [ ],
+      awards: [],
+      contacts: []
     }
   },
   mutations: {
