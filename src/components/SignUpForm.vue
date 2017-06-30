@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="SignUpForm">
     <form @submit.prevent="signUp">
       <div class="row">
         <label>用户名</label>
@@ -51,3 +51,20 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .SignUpForm {
+    .row {
+      margin: 10px;
+      display: flex;
+      label {
+        width: 4em;
+        display: block;
+        text-align: justify;
+      }
+    }
+    .actions {
+      
+    }
+  }
+</style>

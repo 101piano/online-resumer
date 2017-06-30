@@ -39,16 +39,19 @@
   }
   .dialog {
     background: #fff;
-    min-height: 4em;
-    min-widht: 10em;
+    min-height: 5em;
+    min-width: 10em;
     > header {
       padding: 16px;
       display: flex;
-      justify-content: sapce-between;
+      justify-content: space-between;
+      .close {
+        display: block;
+        cursor: pointer;
+      }
     }
     > main {
       padding: 16px;
-
     }
   }
 </style>
