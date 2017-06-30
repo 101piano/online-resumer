@@ -2,7 +2,7 @@
   <div id="resumeEditor">
     <nav>
       <ol>
-        <li v-for="(item,index) in resume.config"
+        <li v-for="(item,index) in resumeConfig"
             :class="{active: item.field === selected}"
             @click="selected = item.field">
             <svg class="icon">
@@ -12,8 +12,9 @@
       </ol>
     </nav>
     <ol class="panels">
-      <li v-for="item in resume.config" v-show="item.field === selected">
+      <li v-for="item in resumeConfig" v-show="item.field === selected">
         <div v-if="item.type === 'array'">
+          <h2>{{ item.field }}</h2>
           <div class="subitem" v-for="(subitem,i) in resume[item.field]">
             <div class="resumeField" v-for="(value,key) in subitem">
               <label>{{key}}</label>
@@ -22,6 +23,7 @@
             </div>
             <hr>
           </div>
+          <button @click="addResumeSubfield(item.field)">新增</button>
         </div>
         <div v-else class="resumeField" v-for="(xxx,key) in resume[item.field]">
           <label>{{key}}</label>
@@ -47,6 +49,9 @@
       },
       resume(){
         return this.$store.state.resume
+      },
+      resumeConfig(){
+        return this.$store.state.resumeConfig
       }
     },
     methods: {
@@ -55,6 +60,9 @@
           path,
           xxx
         })
+      },
+      addResumeSubfield(field){
+        this.$store.commit('addResumeSubfield',{field})
       }
     }
   }
