@@ -42,7 +42,7 @@
           return this.$store.state.selected
         },
         set(value) {
-          return this.$store.commit('switchTab',value)//????????
+          return this.$store.commit('switchTab',value)
         }
       },
       resume(){

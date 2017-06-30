@@ -4,12 +4,12 @@
       <div class="actions">
         <div v-if="logined" class="userActions">
           <span>你好，{{ user.username }}</span>
-          <a class="button" href="#">退出</a>
+          <a class="button" href="#" @click.prevent="signOut">退出</a>
         </div>
         <div v-else class="userActions">
           <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
           <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-            <SignUpForm @success="login($event)" />
+            <SignUpForm @success="signIn($event)" />
           </MyDialog>
           <a class="button" href="#">登录</a>
         </div> 
@@ -22,6 +22,8 @@
 <script>
   import MyDialog from './MyDialog'
   import SignUpForm from './SignUpForm'
+  import AV from '../lib/leancloud'
+
   export default {
     name: 'Topbar',
     data(){
@@ -41,8 +43,12 @@
       MyDialog,SignUpForm
     },
     methods: {
-      login(user){
-        this.signUpDialogVisible = flase
+      signOut(){
+        AV.User.logOut()
+        this.$store.commit('removeUser')
+      },
+      signIn(user){
+        this.signDialogVisible = false
         this.$store.commit('setUser',user)
       }
     }
@@ -57,37 +63,43 @@
     max-width: 1440px;
     height: 64px;
     margin: 0 auto;
-    padding: 0 16px; 
+    padding: 0 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .logo {
       font-size: 24px;
       color: #000;
+      display: block;
     }
-  }
-  .button {
-    width: 72px;
-    height: 32px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    background: #ddd;
-    color: #222;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    &:hover {
-      box-shadow: 1px 1px 1px hsla(0,0,0,0.50);
-    }
-    &primary {
-      background: #02af5f;
-      color: #white;
-    }
+
     .actions {
       display: flex;
       .userActions{
         margin-right: 3em;
+      }
+      .button {
+        width: 72px;
+        height: 32px;
+        border: none;
+        margin: 0 5px;
+        cursor: pointer;
+        font-size: 18px;
+        background: #ddd;
+        color: #222;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        &:hover {
+          box-shadow: 1px 1px 1px hsla(0,0,0,0.50);
+        }
+      }
+      .primary {
+        background: #02af5f;
+        color: white;
       }
     }
   }

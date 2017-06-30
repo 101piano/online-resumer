@@ -4,6 +4,7 @@ import objectPath from 'object-path'
 
 Vue.use(Vuex)
 
+//创建一个store
 export default new Vuex.Store({
   state: {
     selected: 'profile',
@@ -50,20 +51,22 @@ export default new Vuex.Store({
   },
   mutations: {
     initState(state,payload){
-      Object.assign(state,payload)//?????
+      Object.assign(state,payload)//Object.assign(target,...sources)将所有属性的值复制到目标对象，返回目标对象
     },
-    switchTab(state,payload){
-      state.selected = payload //?????
+    switchTab(state,payload){//payload也可以为对象
+      state.selected = payload 
       localStorage.setItem('state',JSON.stringify(state))
     },
     updateResume(state,{path,xxx}){
       //state.resume[field][subfield] = xxx
-      objectPath.set(state.resume,path,xxx)
+      objectPath.set(state.resume,path,xxx)//objectPath.set()??????
       localStorage.setItem('state',JSON.stringify(state))
     },
     setUser(state,payload){
       Object.assign(state.user,payload)
-      console.log(state.user)
+    },
+    removeUser(state) {
+      state.user.id = null
     }
   }
 })

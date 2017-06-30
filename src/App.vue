@@ -23,6 +23,8 @@
   import icons from './assets/icons'
 
   import store from './store/index'
+  import AV from './lib/leancloud'
+  import getAVUser from './lib/getAVUser'
  
   export default {
     name: 'app',
@@ -35,6 +37,7 @@
         state = JSON.parse(state)
       }
       this.$store.commit('initState',state)
+      this.$store.commit('setUser',getAVUser())
     }
   }
   /*insertAdjacentHTML将指定的文本解析为html或xml，
