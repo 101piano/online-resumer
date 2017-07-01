@@ -16,6 +16,7 @@
         <div v-if="item.type === 'array'">
           <h2>{{ $t(`resume.${item.field}._`) }}</h2>
           <div class="subitem" v-for="(subitem,i) in resume[item.field]">
+            <button class="button remove" @click="removeResumeSubfield(item.field,i)">删除</button>
             <div class="resumeField" v-for="(value,key) in subitem">
               <label>{{ $t(`resume.${item.field}.${key}`) }}</label>
               <input type="text" :value="value"
@@ -23,7 +24,7 @@
             </div>
             <hr>
           </div>
-          <button @click="addResumeSubfield(item.field)">新增</button>
+          <button class="button" @click="addResumeSubfield(item.field)">新增</button>
         </div>
         <div v-else class="resumeField" v-for="(xxx,key) in resume[item.field]">
           <label>{{ $t(`resume.profile.${key}`) }}</label>
@@ -63,6 +64,9 @@
       },
       addResumeSubfield(field){
         this.$store.commit('addResumeSubfield',{field})
+      },
+      removeResumeSubfield(field,index){
+        this.$store.commit('removeResumeSubfield',{field,index})
       }
     }
   }
@@ -96,14 +100,23 @@
         }
       }
       svg.icon {
-            width: 24px;
-            height: 24px;
+        width: 24px;
+        height: 24px;
       }
     }
     > .panels {
       flex-grow: 1;
       >li {
-        padding: 24px;
+        padding: 24px;       
+        .subitem {
+          position: relative;
+          margin-top: 10px;
+          .button.remove {
+            position: absolute;
+            top: -3px;
+            right: 0;
+          }
+        }
         .resumeField {
           > label {
             display: block;
@@ -119,19 +132,19 @@
         }
         button {
           margin-top: 20px;
-          padding: 10px;
         }
       }
     }
     ol {
       list-style: none;
     }    
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 24px 0;
+    }
   }
-  hr {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 24px 0;
-  }
+ 
 </style>
 
 

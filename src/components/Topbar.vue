@@ -103,11 +103,11 @@
         &:hover {
           box-shadow: 1px 1px 1px hsla(0,0,0,0.50);
         }
-      }
-      .primary {
-        background: #02af5f;
-        color: white;
-      }
+        &.primary {
+          background: #02af5f;
+          color: white;
+        }
+      }    
     }
   }
 </style>
