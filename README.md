@@ -91,4 +91,8 @@ objectPath.get(obj,"a.h")//"m"
 ```
 其他用法暂时不写</br>
 
-
+### 使用vue-i18n</br>
+安装最新版本会报错，5.0.3就可以了
+```
+npm install vue-i18n@5.0.3 --save
+```
