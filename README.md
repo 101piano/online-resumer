@@ -64,6 +64,31 @@ npm install --save  sass-loader node-sass
 
 ### 使用vuex</br>
 
+### 使用object-path</br>
+* 目的</br>
+```
+Access deep properties using a path</br>
+使用路径访问深度属性</br>
+```
+* 安装</br>
+```
+npm install object-path --save
+```
+* 用法</br>
+```
+ar obj = {
+  a: {
+    b: "d",
+    c: ["e","f"]
+  }
+}
+var objectPath = require("object-path")
 
+objectPath.get(obj,"a.b")//"d"
+
+objectPath.set(obj,"a.h","m")
+objectPath.get(obj,"a.h")//"m"
+```
+其他用法暂时不写</br>
 
 
