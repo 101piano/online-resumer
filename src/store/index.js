@@ -13,12 +13,12 @@ export default new Vuex.Store({
       username: ''
     },
     resumeConfig: [
-      { field: 'profile', icon: 'id', keys: ['姓名','城市','应聘岗位','生日']},
-      { field: '工作经历', icon: 'work', type: 'array', keys:['公司','描述'] },
-      { field: '项目经验', icon: 'heart', type: 'array', keys: ['项目名称','描述'] },
-      { field: '教育经历', icon: 'book', type: 'array', keys: ['学校','描述'] },   
-      { field: '奖项荣誉', icon: 'cup', type: 'array', keys: ['奖项','描述'] },
-      { field: '联系方式', icon: 'phone', type: 'array', keys: ['联系方式', 'content']}
+      { field: 'profile', icon: 'id', keys: ['name','city','title','birthday']},
+      { field: 'workHistory', icon: 'work', type: 'array', keys:['company','details'] },
+      { field: 'projects', icon: 'heart', type: 'array', keys: ['name','details'] },
+      { field: 'education', icon: 'book', type: 'array', keys: ['school','details'] },   
+      { field: 'awards', icon: 'cup', type: 'array', keys: ['name','details'] },
+      { field: 'contacts', icon: 'phone', type: 'array', keys: ['contact', 'content']}
     ],
     resume: {
 
@@ -44,8 +44,8 @@ export default new Vuex.Store({
       localStorage.setItem('state',JSON.stringify(state))
     },
     updateResume(state,{path,xxx}){
-      //state.resume[field][subfield] = xxx
-      objectPath.set(state.resume,path,xxx)//objectPath.set()??????
+      objectPath.set(state.resume,path,xxx)/*设置对象state.resume的path为xxx，类似于state.resume[field][subfield] = xxx
+                                            * 但后者不能*/
       localStorage.setItem('state',JSON.stringify(state))
     },
     setUser(state,payload){
@@ -57,9 +57,13 @@ export default new Vuex.Store({
     addResumeSubfield(state,{field}) {
       let empty = {}
       state.resume[field].push(empty)
+      var arr = state.resumeConfig.filter((i) => i.field === field)
+      console.log(arr)
       state.resumeConfig.filter((i) => i.field === field)[0].keys.map((key) => {
         Vue.set(empty,key,'')
       })
     }
   }
 })
+
+

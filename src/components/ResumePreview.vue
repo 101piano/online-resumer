@@ -1,5 +1,6 @@
 <template>
   <div id="resumePreview">
+    <h1>你好</h1>
     <section data-name="profile" v-if="resume.profile && resume.profile.name">
       <h1>{{ resume.profile.name }}</h1>
       <h2>{{ resume.profile.title }}</h2>
@@ -13,14 +14,22 @@
       <h2>工作经历</h2>
       <ol>
         <li v-for="item in resume.workHistory">
-          <h3>{{ item.company }}</h3>
-          <p v-show="item.content">{{ item.content }}</p>
+          <h3>{{ item.公司 }}</h3>
+          <p v-show="item.描述">{{ item.描述 }}</p>
         </li>
       </ol>
     </section>
 
     <section data-name="projects" v-if="resume.projects && resume.projects.length > 0">
       <h2>项目经验</h2>
+      <ol> 
+        <li v-for="item in resume.projects">
+          <h3>
+            {{ item.项目名称 }}
+            <span v-show="item.项目描述">{{ item.项目描述 }}</span>
+          </h3>
+        </li>
+      </ol>
     </section>
 
     <section data-name="education" v-if="resume.education && resume.education > 0">
@@ -28,8 +37,8 @@
       <ol> 
         <li v-for="item in resume.education">
           <h3>
-            {{ item.school }}
-            <span v-show="item.content">-{{ item.content }}</span>
+            {{ item.学校 }}
+            <span v-show="item.描述">-{{ item.描述 }}</span>
           </h3>
         </li>
       </ol>
@@ -39,8 +48,8 @@
       <h2>获奖荣誉</h2>
       <ol>
         <li v-for="item in resume.awards">
-          <h3>{{ item.name}}</h3>
-          <p v-show="item.content">{{ item.content }}</p>
+          <h3>{{ item.奖项}}</h3>
+          <p v-show="item.描述">{{ item.描述 }}</p>
         </li>
       </ol>
     </section>
@@ -49,8 +58,8 @@
       <h2>联系方式</h2>
       <table>
         <tr v-for="item in resume.contacts">
-          <td>{{ item.contact }}</td>
-          <td v-show="item.content">{{ item.content}}</td>
+          <td>{{ item.联系方式 }}</td>
+          <td v-show="item.details">{{ item.details}}</td>
         </tr>
       </table>
     </section>
