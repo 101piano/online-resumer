@@ -1,6 +1,5 @@
 <template>
   <div id="resumePreview">
-    <h1>你好</h1>
     <section data-name="profile" v-if="resume.profile && resume.profile.name">
       <h1>{{ resume.profile.name }}</h1>
       <h2>{{ resume.profile.title }}</h2>
@@ -10,12 +9,12 @@
       </p>
     </section>
 
-    <section data-name="workHistory" v-if="resume.workHistory && resume.workHistory > 0">
+    <section data-name="workHistory" v-if="resume.workHistory && resume.workHistory.length > 0">
       <h2>工作经历</h2>
       <ol>
         <li v-for="item in resume.workHistory">
-          <h3>{{ item.公司 }}</h3>
-          <p v-show="item.描述">{{ item.描述 }}</p>
+          <h3>{{ item.company }}</h3>
+          <p v-show="item.details">{{ item.details }}</p>
         </li>
       </ol>
     </section>
@@ -24,41 +23,37 @@
       <h2>项目经验</h2>
       <ol> 
         <li v-for="item in resume.projects">
-          <h3>
-            {{ item.项目名称 }}
-            <span v-show="item.项目描述">{{ item.项目描述 }}</span>
-          </h3>
+          <h3>{{ item.name }}</h3>
+          <p v-show="item.details">{{ item.details }}</p>     
         </li>
       </ol>
     </section>
 
-    <section data-name="education" v-if="resume.education && resume.education > 0">
+    <section data-name="education" v-if="resume.education && resume.education.length > 0">
       <h2>教育经历</h2>
       <ol> 
         <li v-for="item in resume.education">
-          <h3>
-            {{ item.学校 }}
-            <span v-show="item.描述">-{{ item.描述 }}</span>
-          </h3>
+          <h3>{{ item.school }}</h3>
+          <p v-show="item.details">-{{ item.details }}</p>
         </li>
       </ol>
     </section>
 
-    <section data-name="awards" v-if="resume.awards &&　resume.awards > 0">
+    <section data-name="awards" v-if="resume.awards &&　resume.awards.length > 0">
       <h2>获奖荣誉</h2>
       <ol>
         <li v-for="item in resume.awards">
-          <h3>{{ item.奖项}}</h3>
-          <p v-show="item.描述">{{ item.描述 }}</p>
+          <h3>{{ item.name}}</h3>
+          <p v-show="item.details">{{ item.details }}</p>
         </li>
       </ol>
     </section>
 
-    <section data-name="contacts" v-if="resume.contacts && resume.contacts > 0">
+    <section data-name="contacts" v-if="resume.contacts && resume.contacts.length > 0">
       <h2>联系方式</h2>
       <table>
         <tr v-for="item in resume.contacts">
-          <td>{{ item.联系方式 }}</td>
+          <td>{{ item.contact }}</td>
           <td v-show="item.details">{{ item.details}}</td>
         </tr>
       </table>

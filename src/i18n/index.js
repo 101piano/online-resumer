@@ -40,7 +40,7 @@ export default {
       contacts: {
         _: '联系方式',
         contact: '途径',
-        content: '内容'
+        details: '内容'
       }
     }
   }
