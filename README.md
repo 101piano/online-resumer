@@ -102,3 +102,9 @@ npm install vue-i18n@5.0.3 --save
 - devtool: '#cheap-module-eval-source-map',
 + devtool: '#source-map'
 ```
+### 使用vue-router</br>
+安装：</br>
+```
+npm i -S vue-router
+```
+
