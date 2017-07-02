@@ -46,12 +46,12 @@ export default new Vuex.Store({
     },
     switchTab(state,payload) {//payload也可以为对象
       state.selected = payload 
-      localStorage.setItem('state',JSON.stringify(state))
+     // localStorage.setItem('state',JSON.stringify(state))
     },
     updateResume(state,{ path,xxx }) {
       objectPath.set(state.resume,path,xxx)/*设置对象state.resume的path为xxx，类似于state.resume[field][subfield] = xxx
                                             * 但后者Vue无法监听属性变化*/
-      localStorage.setItem('state',JSON.stringify(state))
+     // localStorage.setItem('state',JSON.stringify(state))
     },
     setUser(state,payload) {
       Object.assign(state.user,payload)
@@ -114,7 +114,10 @@ export default new Vuex.Store({
       var query = new AV.Query('Resume');
       query.equalTo('owenr_id', getAVUser().id) 
       query.first().then((resume => {
-        commit('setResume', { id: resume.id, ...resume.attributes})
+        //commit('setResume', { id: resume.id, ...resume.attributes})
+        if(resume) {
+          commit('setResume', { id: resume.id, ...resume.attributes})
+        }
       }))
     }
   }

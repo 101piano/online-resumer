@@ -25,23 +25,32 @@
   import store from './store/index'
   import AV from './lib/leancloud'
   import getAVUser from './lib/getAVUser'
+
+  document.body.insertAdjacentHTML('afterbegin',icons)//将svg插入到页面中
  
   export default {
     name: 'app',
     store,
     components: {Topbar,ResumeEditor,ResumePreview},
-    created(){
-      document.body.insertAdjacentHTML('afterbegin',icons)//将svg插入到页面中
-      let state = localStorage.getItem('state')
-      if(state) {
-        state = JSON.parse(state)
+    created(){     
+      this.$store.commit('initState')//初始化resume结构
+      let user = getAVUser()
+      this.$store.commit('setUser',user)
+      if(user.id) {
+        this.$store.dispatch('fetchResume').then(() => {
+          this.restoreResumeFromLocalStorage()
+        })
+      }else {
+        this.restoreResumeFromLocalStorage()
+      }   
+    },
+    methods: {
+      restoreResumeFromLocalStorage() {
+        let resume = localStorage.getItem('resume')
+        if(resume) {
+          this.$store.commit('setResume', JSON.parse(resume))
+        }
       }
-      /*this.$store.commit('initState',state)
-       *this.$store.commit('setUser',getAVUser())
-       */
-      this.$store.dispatch('fetchResume').then(() => {
-        this.$store.commit('initState',state)
-      })
     }
   }
   /*insertAdjacentHTML将指定的文本解析为html或xml，
