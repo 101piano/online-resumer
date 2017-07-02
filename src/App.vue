@@ -36,8 +36,12 @@
       if(state) {
         state = JSON.parse(state)
       }
-      this.$store.commit('initState',state)
-      this.$store.commit('setUser',getAVUser())
+      /*this.$store.commit('initState',state)
+       *this.$store.commit('setUser',getAVUser())
+       */
+      this.$store.dispatch('fetchResume').then(() => {
+        this.$store.commit('initState',state)
+      })
     }
   }
   /*insertAdjacentHTML将指定的文本解析为html或xml，

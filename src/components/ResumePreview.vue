@@ -1,5 +1,7 @@
 <template>
   <div id="resumePreview">
+    <button class="button" @click="save">保存</button>
+
     <section data-name="profile" v-if="resume.profile && resume.profile.name">
       <h1>{{ resume.profile.name }}</h1>
       <h2>{{ resume.profile.title }}</h2>
@@ -67,6 +69,11 @@
     computed: {
       resume(){
         return this.$store.state.resume
+      }
+    },
+    methods: {
+      save(){
+        this.$store.dispatch('saveResume')
       }
     }
   }
