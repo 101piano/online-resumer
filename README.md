@@ -96,3 +96,9 @@ objectPath.get(obj,"a.h")//"m"
 ```
 npm install vue-i18n@5.0.3 --save
 ```
+### 使用source-map</br>
+在build/webpack.dev.conf.js
+```
+- devtool: '#cheap-module-eval-source-map',
++ devtool: '#source-map'
+```
