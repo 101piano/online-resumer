@@ -43,7 +43,7 @@
         user.setUsername(username);
         user.setPassword(password);
         user.signUp().then(() => {
-          this.$emit('success',getAVUser())
+          this.$emit('success', getAVUser())
         },(error)=> {
           this.errorMessage = getErrorMessage(error)
         })

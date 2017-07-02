@@ -39,7 +39,10 @@ export default new Vuex.Store({
           })
         }
       })
-      Object.assign(state.payload)
+      if(payload) {
+        Object.assign(state, payload)
+      }
+      
     },
     switchTab(state,payload) {//payload也可以为对象
       state.selected = payload 
@@ -74,7 +77,7 @@ export default new Vuex.Store({
     },
     setResume(state, resume) {
       state.resumeConfig.map(({ field }) => {
-        Vue.set(state.resume,field,resume[field])
+        Vue.set(state.resume, field, resume[field])
       })
       state.resume.id = resume.id
     }

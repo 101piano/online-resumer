@@ -7,7 +7,7 @@
       </div>
       <div class="row">
         <label>密码</label>
-        <input type="text" v-model="formData.password" required>
+        <input type="password" v-model="formData.password" required>
       </div>
       <div class="actions">
         <input type="submit" value="提交">
@@ -36,9 +36,10 @@
     methods: {
       signIn(){
         let {username,password} = this.formData
-        AV.User.logIn(username,password).then(() => {
+        AV.User.logIn(username, password).then(() => {
          // this.$store.commit('setUser',getAVUser())
-          this.$emit.commit('success',getAVUser())
+        //  this.$emit.commit('success', getAVUser())
+         this.$emit('success', getAVUser())
         },(error) => {
           this.errorMessage = getErrorMessage(error)
         })
