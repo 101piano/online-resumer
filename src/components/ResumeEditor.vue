@@ -24,7 +24,7 @@
             </div>
             <hr>
           </div>
-          <button class="button" @click="addResumeSubfield(item.field)">新增</button>
+          <button class="button add" @click="addResumeSubfield(item.field)">新增</button>
         </div>
         <div v-else class="resumeField" v-for="(xxx,key) in resume[item.field]">
           <label>{{ $t(`resume.profile.${key}`) }}</label>
@@ -130,7 +130,7 @@
             padding: 0 8px;
           }
         }
-        button {
+        .add {
           margin-top: 20px;
         }
       }

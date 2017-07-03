@@ -64,7 +64,10 @@
       }
     }
     .actions {
-      
+      margin: 10px;
+      input {
+        padding: 5px;
+      }
     }
   }
 </style>

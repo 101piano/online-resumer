@@ -1,7 +1,7 @@
 <template>
   <div id="resumePreview">
     <button class="button" @click="save">保存</button>
-    <router-link class="button" to="/preview">preview</router-link>
+    <router-link class="button preview" to="/preview">预览</router-link>
     <section data-name="profile" v-if="resume.profile && resume.profile.name">
       <h1>{{ resume.profile.name }}</h1>
       <h2>{{ resume.profile.title }}</h2>
@@ -102,6 +102,12 @@
     }
     p {
       white-space: pre-line;
+    }
+    .button {
+      margin-bottom: 10px;
+    }
+    .preview {
+      line-height: 32px;
     }
     section {
       > h2:first-child {

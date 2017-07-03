@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="SignInForm">
     <form @submit.prevent="signIn">
       <div class="row">
         <label>用户名</label>
@@ -47,3 +47,23 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .SignInForm {
+    .row {
+      margin: 10px;
+      display: flex;
+      label {
+        width: 4em;
+        display: block;
+        text-align: justify;
+      }
+    }
+    .actions {
+      margin: 10px;
+      input {
+        padding: 5px;
+      }
+    }
+  }
+</style>

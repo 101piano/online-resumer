@@ -31,11 +31,11 @@ export default new Vuex.Store({
       state.resumeConfig.map((item) => {
         if(item.type === 'array') {
           //state.resume[item.field] = []//这样写Vue无法监听属性变化
-          Vue.set(state.resume,item.field,[])
+          Vue.set(state.resume, item.field, [])
         }else{
-          Vue.set(state.resume,item.field,{})
+          Vue.set(state.resume, item.field, {})
           item.keys.map((key) => {
-            Vue.set(state.resume[item.field],key,'')
+            Vue.set(state.resume[item.field], key, '')
           })
         }
       })
@@ -52,9 +52,10 @@ export default new Vuex.Store({
       objectPath.set(state.resume,path,xxx)/*设置对象state.resume的path为xxx，类似于state.resume[field][subfield] = xxx
                                             * 但后者Vue无法监听属性变化*/
      // localStorage.setItem('state',JSON.stringify(state))
+      localStorage.setItem('resume',JSON.stringify(state))
     },
     setUser(state,payload) {
-      Object.assign(state.user,payload)
+      Object.assign(state.user, payload)
     },
     removeUser(state) {
       // state.user.id = null
@@ -66,11 +67,11 @@ export default new Vuex.Store({
       var arr = state.resumeConfig.filter((i) => i.field === field)
       console.log(arr)
       state.resumeConfig.filter((i) => i.field === field)[0].keys.map((key) => {
-        Vue.set(empty,key,'')
+        Vue.set(empty, key, '')
       })
     },
     removeResumeSubfield(state, { field,index }){
-      state.resume[field].splice(index,1)
+      state.resume[field].splice(index, 1)
     },
     setResumeId(state, { id }) {
       state.resume.id = id
@@ -84,11 +85,14 @@ export default new Vuex.Store({
   },
   actions: {
     saveResume({ state, commit }, payload){
+     
       var Resume = AV.Object.extend('Resume')
       var resume = new Resume()
+      console.log(state.resume.id)
       if(state.resume.id) {
         resume.id = state.resume.id
       }
+       
       resume.set('profile', state.resume.profile)
       resume.set('workHistory', state.resume.workHistory)
       resume.set('projects', state.resume.projects)
@@ -100,6 +104,7 @@ export default new Vuex.Store({
       var acl = new AV.ACL()
       acl.setPublicReadAccess(true)
       acl.setWriteAccess(AV.User.current(), true)
+     
 
       resume.setACL(acl)
       resume.save().then(function(response) {
@@ -112,9 +117,8 @@ export default new Vuex.Store({
     },
     fetchResume({ commit }, payload) {
       var query = new AV.Query('Resume');
-      query.equalTo('owenr_id', getAVUser().id) 
+      query.equalTo('owner_id', getAVUser().id) 
       query.first().then((resume => {
-        //commit('setResume', { id: resume.id, ...resume.attributes})
         if(resume) {
           commit('setResume', { id: resume.id, ...resume.attributes})
         }

@@ -14,7 +14,7 @@ export default {
       profile: {
         name: '姓名',
         city:'城市',
-        title: '职位',
+        title: '应聘岗位',
         birthday: '生日'
       },
       workHistory: {
