@@ -27,12 +27,5 @@
 </script>
 
 <style lang="scss" scoped>
-  #resumeEditor {
-    min-width: 35%;
-    background: #444;
-  }
-  #resumePreview {
-    flex-grow: 1;
-    marign-left: 16px;
-  }
+ 
 </style>

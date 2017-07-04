@@ -7,6 +7,9 @@ import VueI18n from 'vue-i18n'
 import i18n from './i18n/'
 import store from './store/index'
 
+import $ from 'jquery'
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min.js'
 
 var locales = i18n
 Vue.use(VueI18n)
