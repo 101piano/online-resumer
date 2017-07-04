@@ -1,14 +1,12 @@
 <template>
-  <div>
-     <div class="page">
-      <header>
-        <Topbar />
-      </header>
-      <main>
-        <ResumeEditor />
-        <ResumePreview />
-      </main>    
-    </div>
+    <div class="page">
+    <header>
+      <Topbar />
+    </header>
+    <main>
+      <ResumeEditor />
+      <ResumePreview />
+    </main>    
   </div>
 </template>
 

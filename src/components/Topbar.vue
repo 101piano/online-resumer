@@ -1,6 +1,6 @@
 <template>
   <div id="topbar">
-      <span class="logo">Resumer</span>
+      <span class="logo">在线简历</span>
       <div class="actions">
         <div v-if="logined" class="userActions">
           <span class="welcome">你好，{{ user.username }}</span>
@@ -55,6 +55,7 @@
         this.signUpDialogVisible = false
         this.signInDialogVisible = false
         this.$store.commit('setUser',user)
+        this.$store.dispatch('fetchResume')
       }
     }
   }

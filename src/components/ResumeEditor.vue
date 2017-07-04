@@ -49,6 +49,7 @@
         }
       },
       resume(){
+        console.log(this.$store.state.resume.profile)
         return this.$store.state.resume
       },
       resumeConfig(){
@@ -57,16 +58,17 @@
     },
     methods: {
       changeResumeField(path,xxx){
-        this.$store.commit('updateResume',{
+        console.log('我输入了哦')
+        this.$store.commit('updateResume', {
           path,
           xxx
         })
       },
       addResumeSubfield(field){
-        this.$store.commit('addResumeSubfield',{field})
+        this.$store.commit('addResumeSubfield', {field})
       },
       removeResumeSubfield(field,index){
-        this.$store.commit('removeResumeSubfield',{field,index})
+        this.$store.commit('removeResumeSubfield', { field, index })
       }
     }
   }

@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div >
    <router-view></router-view>
-  </div>
-  
+  </div> 
 </template>
 
 <script>
@@ -41,7 +40,8 @@
   }
   /*insertAdjacentHTML将指定的文本解析为html或xml，
    *并将结果节点插入到DOM树中指定的位置。
-   *afterbegin：插入元素内部的第一个子节点之前*/
+   *afterbegin：插入元素内部的第一个子节点之前
+   */
 </script>
 
 <style lang="scss" scoped>

@@ -79,8 +79,8 @@
   }
 </script>
  
-<style lang="scss">
-  #resumePreview {
+<style lang="scss" scoped>
+  #resumePreview { 
     flex-grow: 1;
     margin-left: 16px;
     background: #fff;

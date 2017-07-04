@@ -62,10 +62,13 @@ export default new Vuex.Store({
       state.user.id = ''
     },
     addResumeSubfield(state, { field }) {
-      let empty = {}
+      if(!state.user.username) {
+        alert('请先登录')
+        return
+      }
+      let empty = {}   
       state.resume[field].push(empty)
       var arr = state.resumeConfig.filter((i) => i.field === field)
-      console.log(arr)
       state.resumeConfig.filter((i) => i.field === field)[0].keys.map((key) => {
         Vue.set(empty, key, '')
       })
@@ -85,10 +88,13 @@ export default new Vuex.Store({
   },
   actions: {
     saveResume({ state, commit }, payload){
-     
+      if(!state.user.username) {
+        alert('请先登录')
+        return
+      }
       var Resume = AV.Object.extend('Resume')
       var resume = new Resume()
-      console.log(state.resume.id)
+  
       if(state.resume.id) {
         resume.id = state.resume.id
       }
