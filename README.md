@@ -108,3 +108,73 @@ npm install vue-i18n@5.0.3 --save
 npm i -S vue-router
 ```
 
+### 引入bootstrap</br>
+引入bootsrtap之前需要引入jquery</br>
+安装：</br>
+```
+npm install bootstrap jquery --save
+```
+引入jquery:在webpack.base.conf.js中
+```
+var webpack = require('webpack')
+.......
+module.exports = {
+  ....,
+  resolve: {
+    alias: {
+      'jquery': path:resolve(__dirname,'../node_modules/jquery/src/jquery')
+    },
+    ...,
+    plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery'
+      })
+    ]
+  }
+  
+}
+
+```
+将bootstrap的css,js,fonts放入src/assets文件中</br>
+在main.js中
+```
+import $ from 'jquery'
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min.js'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
