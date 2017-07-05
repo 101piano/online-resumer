@@ -49,7 +49,6 @@
         }
       },
       resume(){
-        console.log(this.$store.state.resume.profile)
         return this.$store.state.resume
       },
       resumeConfig(){
@@ -58,7 +57,6 @@
     },
     methods: {
       changeResumeField(path,xxx){
-        console.log('我输入了哦')
         this.$store.commit('updateResume', {
           path,
           xxx
@@ -102,6 +100,10 @@
         }
       }
       svg.icon {
+        width: 24px;
+        height: 24px;
+      }
+      svg.icon use {
         width: 24px;
         height: 24px;
       }

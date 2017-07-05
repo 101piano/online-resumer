@@ -15,11 +15,11 @@ export default new Vuex.Store({
       username: ''
     },
     resumeConfig: [
-      { field: 'profile', icon: 'id', keys: ['name','city','title','birthday'] },
-      { field: 'workHistory', icon: 'work', type: 'array', keys:['company','details'] },
-      { field: 'projects', icon: 'heart', type: 'array', keys: ['name','details'] },
-      { field: 'education', icon: 'book', type: 'array', keys: ['school','details'] },   
-      { field: 'awards', icon: 'cup', type: 'array', keys: ['name','details'] },
+      { field: 'profile', icon: 'id', keys: ['name', 'city', 'title', 'birthday'] },
+      { field: 'workHistory', icon: 'work', type: 'array', keys:['company', 'details'] },
+      { field: 'projects', icon: 'heart', type: 'array', keys: ['name', 'details'] },
+      { field: 'education', icon: 'book', type: 'array', keys: ['school', 'details'] },   
+      { field: 'awards', icon: 'cup', type: 'array', keys: ['name', 'details'] },
       { field: 'contacts', icon: 'phone', type: 'array', keys: ['contact', 'details'] }
     ],
     resume: {
@@ -32,6 +32,7 @@ export default new Vuex.Store({
         if(item.type === 'array') {
           //state.resume[item.field] = []//这样写Vue无法监听属性变化
           Vue.set(state.resume, item.field, [])
+         
         }else{
           Vue.set(state.resume, item.field, {})
           item.keys.map((key) => {
@@ -46,26 +47,19 @@ export default new Vuex.Store({
     },
     switchTab(state,payload) {//payload也可以为对象
       state.selected = payload 
-     // localStorage.setItem('state',JSON.stringify(state))
     },
     updateResume(state,{ path,xxx }) {
       objectPath.set(state.resume,path,xxx)/*设置对象state.resume的path为xxx，类似于state.resume[field][subfield] = xxx
                                             * 但后者Vue无法监听属性变化*/
-     // localStorage.setItem('state',JSON.stringify(state))
-      localStorage.setItem('resume',JSON.stringify(state))
+       localStorage.setItem('resume',JSON.stringify(state.resume))
     },
     setUser(state,payload) {
       Object.assign(state.user, payload)
     },
     removeUser(state) {
-      // state.user.id = null
       state.user.id = ''
     },
     addResumeSubfield(state, { field }) {
-      if(!state.user.username) {
-        alert('请先登录')
-        return
-      }
       let empty = {}   
       state.resume[field].push(empty)
       var arr = state.resumeConfig.filter((i) => i.field === field)

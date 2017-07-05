@@ -20,7 +20,7 @@
     created(){     
       this.$store.commit('initState')//初始化resume结构
       let user = getAVUser()
-      this.$store.commit('setUser',user)
+      this.$store.commit('setUser', user)
       if(user.id) {
         this.$store.dispatch('fetchResume').then(() => {
           this.restoreResumeFromLocalStorage()
