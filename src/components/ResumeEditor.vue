@@ -83,7 +83,7 @@
     
     > nav {
       width: 80px;
-      background: black;
+      background: #12A8D4;
       color: white;
       > ol {
         > li {
@@ -100,10 +100,6 @@
         }
       }
       svg.icon {
-        width: 24px;
-        height: 24px;
-      }
-      svg.icon use {
         width: 24px;
         height: 24px;
       }
